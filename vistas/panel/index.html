@@ -1,0 +1,23 @@
+<section id="sidebar">
+    <div class="container">
+    <div class="d-flex bd-highlight ">
+        <div class="py-5  pr-4 flex-shrink-1  bd-highlight">
+            <small class="bg-warning px-2"><?= $rol ?></small>
+            <strong><?= $name ?></strong>
+            <hr>
+            <ul class="list-group">
+                <?php foreach ($models as $key => $value): ?>
+                     <a href="<?= $value['url'] ?>">
+                         <li class="list-group-item"> <?= $value['name'] ?></li>
+                     </a>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+      <div class="py-5   p-2 w-100 bd-highlight  ">
+                  <div class=" r">
+                      <?= $child ?>
+                  </div>
+      </div>
+    </div>
+</div>
+</section>
