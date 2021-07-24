@@ -1,0 +1,23 @@
+body{
+    background: #f8f9fa;
+}
+
+
+p {
+    color: #8892a0;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.5;
+    /* color: inherit; */
+}
+a{
+    text-decoration: none;
+}
+
+
+.border-block {
+border-top: 1px solid #f2f2f2;
+}

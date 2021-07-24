@@ -2,9 +2,8 @@
 include 'core/conexion.class.php';
 include 'core/context.class.php';
 include 'core/template.class.php';
+include 'config.php';
 
-// base de datos
-$db = new DB("127.0.0.1", "Template", "root","");
 
 // Enrutador
 $uri = $_SERVER['REQUEST_URI'];

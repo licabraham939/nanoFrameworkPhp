@@ -24,25 +24,44 @@ class Context{
     }
 
     // Sessiones
-    function session_close(){
+    function sessionStart($idUser){
         session_start();
-        unset($_SESSION['user']);
-        unset($_SESSION['rol']);
+        $_SESSION['userId'] = $idUser;
     }
-    function session_open($userName, $userRol){
+    function sessionFinish(){
         session_start();
-        $_SESSION['user'] = $userName;
-        $_SESSION['rol'] = $userRol;
+        unset($_SESSION['userId']);
     }
-    function session_user(){
-        session_start();  return $_SESSION['user'];
+    function sessionUser(){
+        session_start();
+        $user = $this->model("user")->get($_SESSION['userId']);
+        if($user != []) return $user[0];
+        return null;
     }
-    function session_rol(){
-       session_start();  return $_SESSION['rol'];
+    function sessionExist(){
+       session_start();  return isset($_SESSION['userId']);
     }
-    function session_exist(){
-       session_start();  return isset($_SESSION['rol']);
-    }
+
+    //
+    // function session_close(){
+    //     session_start();
+    //     unset($_SESSION['user']);
+    //     unset($_SESSION['rol']);
+    // }
+    // function session_open($userName, $userRol){
+    //     session_start();
+    //     $_SESSION['user'] = $userName;
+    //     $_SESSION['rol'] = $userRol;
+    // }
+    // function session_user(){
+    //     session_start();  return $_SESSION['user'];
+    // }
+    // function session_rol(){
+    //    session_start();  return $_SESSION['rol'];
+    // }
+    // function session_exist(){
+    //    session_start();  return isset($_SESSION['rol']);
+    // }
 
     // Template
      function create($name, $arg = []) {

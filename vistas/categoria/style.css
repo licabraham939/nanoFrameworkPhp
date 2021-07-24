@@ -1,0 +1,29 @@
+
+.page-contents{
+  max-width: 100%;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.nav-pills li button{
+    border: none;
+    border-radius: 0px !important;
+    background: none;
+}
+.nav-pills li button:focus{
+    border: none;
+    border-radius: 0px !important;
+    outline:none;
+}
+.nav-pills li{
+    border: none;
+    border-radius: 0px !important;
+}
+.nav-pills ul {
+    margin: 0px;
+    padding: 0px;
+}
+.navv{
+    border-bottom: 1px solid #007bff;
+    padding: 0px;
+}

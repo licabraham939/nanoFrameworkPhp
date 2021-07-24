@@ -1,0 +1,25 @@
+ <section>
+     <div class="container p-5">
+            <div class="  text-center">
+                <h4>Actuliza tu Producto</h4>
+                <p>Escribe los datos de tu producto</p>
+            </div>
+          <div class="card-body">
+            <form class="" action="/adminProductos/update_producto" method="post">
+                <input name="id"   value="<?= $producto->id ?>" hidden  >
+                <input name="name"   value="<?= $producto->name ?>"   required  placeholder="nombre  "  class="form-control mb-3">
+                <input name="price"    value="<?= $producto->price ?>"  required  placeholder="precio"  class="form-control mb-3">
+                <input name="description"   value="<?= $producto->description ?>"      placeholder="descripcion"  class="form-control mb-3">
+                <input name="img"     value="<?= $producto->img ?>"    placeholder="Url imagen"  class="form-control mb-3">
+                <select name="id_categoria"   required class="form-select" aria-label="Default select example">
+                    <?php foreach ($categorias as $key => $value): ?>
+                        <option value="<?= $value->id ?>"  <?= ($producto->id_categoria ==  $value->id )?'selected':''?>    ><?= $value->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit" class="btn w-100 my-3 btn-primary btn-sm">ACTUALIZAR</button>
+            </form>
+          </div>
+
+
+</div>
+</section>

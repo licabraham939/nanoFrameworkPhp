@@ -7,23 +7,22 @@
      }
 
      public function index(){
-         $html  = ($this->context->session_exist())
-            ?$this->context->create("navLog")
-            :$this->context->create("nav");
+         $html  = ($this->context->sessionExist())
+            ?$this->context->create("_componentes/navLog")
+            :$this->context->create("_componentes/nav");
+
          $html  .= $this->context->create("about");
-         $html  .= $this->context->create("footer");
+         $html  .= $this->context->create("_componentes/footer");
          return $this->context->ret($html);
      }
 
      // ej:http://localhost:3001/about/f/123/23
      public function f($arg){
-         $html  = $this->context->create("nav");
+         $html  = $this->context->create("_componentes/nav");
          $html .= json_encode($arg);
          return $this->context->ret($html);
      }
 
 }
-
-
 
 ?>

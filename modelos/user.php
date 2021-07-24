@@ -14,18 +14,30 @@ class User{
         $data  = $this->db->consult($qry, [$id]);
         return $data;
     }
+    public function getId($id)  {
+        $qry = "SELECT * FROM `users` WHERE `id` = ?";
+        $data  = $this->db->consult($qry, [$id]);
+        return $data;
+    }
 
     public function create($name, $password, $email)  {
-        // $date = new DateTime();
-        $qry = "INSERT INTO `users` (`name`, `email`, `password`,`rol`) VALUES (?,?,?,0)";
-        $this->db->consult($qry,[$name,$email, password_hash($password , PASSWORD_DEFAULT)]);
-        // $date->format('Y-m-d H:i:s')
+        var_dump($name, $password, $email);
+        $qry = "INSERT INTO `users`
+            (`id`, `name`, `password`, `email`, `rol`, `phone`, `fecha_registro`, `status`)
+            VALUES (DEFAULT,?,?,?,0,0, NOW(),0)";
+        $this->db->consult($qry,[$name, $password,$email]);
     }
-    public function update($id, $name, $password, $email, $rol)  {
+    public function update($phone, $name, $id)  {
+        $qry = "UPDATE `users` SET  `phone` = ?,  `name` = ? WHERE `id` = ? ";
+        $this->db->consult($qry,[$phone, $name, $id]);
+    }
+    public function delete($id){
 
     }
-    public function delete($id)  {
-
+    public function active($id)  {
+        $statusOld = $this->getId($id)[0]->status;
+        $qry = "UPDATE `users` SET  `status` = ?  WHERE `id` = ? ";
+        $this->db->consult($qry,[($statusOld)?'0':'1' ,$id]);
     }
     public function exist($id)  {
         return count($this->get($id)) > 0;

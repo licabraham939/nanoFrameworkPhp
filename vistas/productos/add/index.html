@@ -1,0 +1,24 @@
+ <section>
+     <div class="container p-5">
+            <div class="  text-center">
+                <h4>Agrega Nuevo Producto</h4>
+                <p>Escribe los datos de tu producto</p>
+            </div>
+          <div class="card-body">
+            <form class="" action="/adminProductos/add_producto" method="post">
+                <input name="name"   required  placeholder="nombre  "  class="form-control mb-3">
+                <input name="price"   required  placeholder="precio"  class="form-control mb-3">
+                <input name="description"      placeholder="descripcion"  class="form-control mb-3">
+                <input name="img"      placeholder="Url imagen"  class="form-control mb-3">
+                <select name="id_categoria"  required class="form-select" aria-label="Default select example">
+                    <?php foreach ($categorias as $key => $value): ?>
+                        <option value="<?= $value->id ?>"><?= $value->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit" class="btn w-100 my-3 btn-primary btn-sm">Agregar</button>
+            </form>
+          </div>
+
+
+</div>
+</section>

@@ -7,10 +7,11 @@
      }
 
      public function index(){
-         $html  = ($this->context->session_exist())
-            ?$this->context->create("navLog")
-            :$this->context->create("nav");
+         $html  = ($this->context->sessionExist())
+            ?$this->context->create("_componentes/navLog")
+            :$this->context->create("_componentes/nav");
          $html  .= $this->context->create("error404");
+         $html  .= $this->context->create("_componentes/footer");
          return $this->context->ret($html);
      }
 

@@ -1,0 +1,9 @@
+.bloque{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    padding: 7.5rem 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
