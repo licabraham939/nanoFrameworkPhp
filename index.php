@@ -22,7 +22,10 @@ if(file_exists ("paginas/".$uriP[0].".php")){
                 $f = $uriP[1]; array_shift($uriP);array_shift($uriP);
                 render( $pg->$f($uriP) );
             }
-            else header("location:/error404");
+            else{
+                array_shift($uriP);
+                render( $pg->index($uriP));
+            };
     }
     else render($pg->index());
 }
