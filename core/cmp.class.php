@@ -6,7 +6,7 @@ class Cmp{
     function __construct(){
         // code...
     }
-    public function paseComponent($name, $args){
+    public function parseComponent($name, $args){
         $template = $this->create($name, $args);
         $script = $this->get_string_between($template,"<script>","</script>");
         $html = $this->get_string_between($template,"</script>","<style>");

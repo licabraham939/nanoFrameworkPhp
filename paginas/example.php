@@ -10,13 +10,11 @@
          $html  = ($this->context->sessionExist())
             ?$this->context->create("_componentes/navLog")
             :$this->context->create("_componentes/nav");
-
         // Permite usar funciones definidas en helper
+        // $html  .= $this->create("showfiles",["name" => "SOY UN COMPONENTE DE UN SOLO ARCHIVO"]);
         // y en lib por defecto del sistema
         // var_dump($this->help("suma",[1, 1]));
-        // var_dump($this->lib("hello"));
-        $html  .= $this->cmp("filesshow",["name" => "SOY UN COMPONENTE DE UN SOLO ARCHIVO"]);
-         $html  .= $this->context->create("about");
+         $html  .= $this->lib("files")->ls("@recursos");
          $html  .= $this->context->create("_componentes/footer");
          return $this->ret($html);
      }

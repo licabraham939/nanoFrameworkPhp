@@ -1,0 +1,29 @@
+<script>
+    console.log("HOLA");
+</script>
+
+
+<kaiwik>
+    <section >
+        <div class="container py-3">
+            <h5 class="colo  " >Files</h5>
+                <?php foreach ($files as $key => $value): ?>
+                <div class="card p-2 px-md-5 ">
+                    <div class="d-flex justify-content-between align-items-center">
+                    <strong><?= $value ?></strong>
+                    <a href="<?= $rut ?>/<?= $value ?>" download class=" btn btn-sm btn-secondary"> Descargar </a>
+                    </div>
+                    </div>
+                    <?php endforeach; ?>
+         </div>
+    </section>
+</kaiwik>
+
+<style>
+    .colo{
+        color: blue;
+    }
+    .colo2{
+        color: green;
+    }
+</style>

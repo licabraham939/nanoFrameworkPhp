@@ -17,17 +17,14 @@ class Context{
         $obj = new Helper();
         return $obj->$name(...$args);
     }
-    public function lib($name, $args = []){
-        $obj =  new Lib();
-        return $obj->$name(...$args);
+
+    function lib($libName){
+        require_once("core/lib/".$libName.".php");
+        $lib = ucfirst($libName);
+        $lib = new $lib();
+        return $lib;
     }
-    public function cmp($name, $args = []){
-        $obj =  new Cmp();
-        [$html, $css, $js] = $obj->paseComponent($name,$args);
-        $this->csscmp.=$css;
-        $this->jscmp.=$js;
-        return $html;
-    }
+
     // Modelos
     function model($modelName){
         require_once("modelos/".$modelName.".php");
@@ -78,12 +75,22 @@ class Context{
 
     // Template
      function create($name, $arg = []) {
-        $html= new template("vistas/".$name."/index.html" , $arg);
-        $this->css[] = $name;
-        $this->js[] = $name;
-        return $html;
+         if (file_exists("vistas/".$name."/index.html")) {
+             $html= new template("vistas/".$name."/index.html" , $arg);
+             $this->css[] = $name;
+             $this->js[] = $name;
+             return $html;
+         }
+         else {
+             $obj =  new Cmp();
+             [$html, $css, $js] = $obj->parseComponent($name,$arg);
+             $this->csscmp.=$css;
+             $this->jscmp.=$js;
+             return $html;
+         }
     }
-    function ret( $html) { 
+
+    function ret( $html) {
        return [
            "title" => $this->title,
            "css" => $this->css,
