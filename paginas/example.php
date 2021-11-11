@@ -20,9 +20,9 @@
      }
 
      // ej:http://localhost:3001/about/f/123/23
-     public function ok($arg){
+     public function test($arg){
          $html  = $this->context->create("_componentes/nav");
-         return $this->ok($html);
+         return $this->ok(["asdf","df"], "si claro");
      }
 
 }
