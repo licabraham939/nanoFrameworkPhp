@@ -38,7 +38,9 @@ function render($vista){
         "title"   => $title,
         "RootCSS"   => $css,
         "RootHTML" => $html,
-        "RootJS" => $js
+        "RootJS" => $js,
+        "CSSCMP" => '<style media="screen">'.$csscmp.'</style>',
+        "JSCMP" => '<script type="text/javascript">'.$jscmp.' </script>'
     ]);
     echo $view;
 }

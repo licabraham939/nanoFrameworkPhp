@@ -1,20 +1,33 @@
 <?php
 include 'helper.class.php';
-include 'pass.class.php';
+include 'lib.class.php';
+include 'cmp.class.php';
 /**
  * Contexto de una conexio y datos del usurio
  */
 class Context{
     public $title ;  private $css = []; private $js = [];
+    private $csscmp = ""; private $jscmp = "";
 
-    private $helpers;
-    private $pass;
     function __construct($ddbb){
         $this->db = $ddbb;
-        $this->helper = new Helper();
-        $this->pass = new Pass();
     }
 
+    public function help($name, $args){
+        $obj = new Helper();
+        return $obj->$name(...$args);
+    }
+    public function lib($name, $args = []){
+        $obj =  new Lib();
+        return $obj->$name(...$args);
+    }
+    public function cmp($name, $args = []){
+        $obj =  new Cmp();
+        [$html, $css, $js] = $obj->paseComponent($name,$args);
+        $this->csscmp.=$css;
+        $this->jscmp.=$js;
+        return $html;
+    }
     // Modelos
     function model($modelName){
         require_once("modelos/".$modelName.".php");
@@ -70,12 +83,14 @@ class Context{
         $this->js[] = $name;
         return $html;
     }
-    function ret( $html) {
+    function ret( $html) { 
        return [
            "title" => $this->title,
            "css" => $this->css,
            "html" => $html,
            "js" => $this->js,
+           "csscmp" => $this->csscmp,
+           "jscmp" => $this->jscmp,
        ];
    }
 
