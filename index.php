@@ -33,16 +33,26 @@ else header("location:/error404");
 
 // pinta al web completa con su js y stylo personalzado
 function render($vista){
-    extract($vista); // crea las varibales a partir del clave valor
-    $view =  new Template("vistas/app.html",[
-        "title"   => $title,
-        "RootCSS"   => $css,
-        "RootHTML" => $html,
-        "RootJS" => $js,
-        "CSSCMP" => '<style media="screen">'.$csscmp.'</style>',
-        "JSCMP" => '<script type="text/javascript">'.$jscmp.' </script>'
-    ]);
-    echo $view;
+    switch ($vista["type"]) {
+        case 'html':
+                extract($vista); // crea las varibales a partir del clave valor
+                $view =  new Template("vistas/app.html",[
+                    "title"   => $title,
+                    "RootCSS"   => $css,
+                    "RootHTML" => $html,
+                    "RootJS" => $js,
+                    "CSSCMP" => '<style media="screen">'.$csscmp.'</style>',
+                    "JSCMP" => '<script type="text/javascript">'.$jscmp.' </script>'
+                ]);
+                echo $view;
+            break;
+        default:
+            header('Content-Type: application/json; charset=utf-8');
+            echo(json_encode($vista));
+            break;
+    }
+
+
 }
 
 ?>

@@ -20,10 +20,9 @@
      }
 
      // ej:http://localhost:3001/about/f/123/23
-     public function f($arg){
+     public function ok($arg){
          $html  = $this->context->create("_componentes/nav");
-         $html .= json_encode($arg);
-         return $this->context->ret($html);
+         return $this->ok($html);
      }
 
 }

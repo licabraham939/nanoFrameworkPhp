@@ -52,26 +52,6 @@ class Context{
        session_start();  return isset($_SESSION['userId']);
     }
 
-    //
-    // function session_close(){
-    //     session_start();
-    //     unset($_SESSION['user']);
-    //     unset($_SESSION['rol']);
-    // }
-    // function session_open($userName, $userRol){
-    //     session_start();
-    //     $_SESSION['user'] = $userName;
-    //     $_SESSION['rol'] = $userRol;
-    // }
-    // function session_user(){
-    //     session_start();  return $_SESSION['user'];
-    // }
-    // function session_rol(){
-    //    session_start();  return $_SESSION['rol'];
-    // }
-    // function session_exist(){
-    //    session_start();  return isset($_SESSION['rol']);
-    // }
 
     // Template
      function create($name, $arg = []) {
@@ -92,6 +72,7 @@ class Context{
 
     function ret( $html) {
        return [
+           "type" => "html",
            "title" => $this->title,
            "css" => $this->css,
            "html" => $html,
@@ -100,6 +81,25 @@ class Context{
            "jscmp" => $this->jscmp,
        ];
    }
+
+       function ok($data, $mensaje = null) {
+         http_response_code(200);
+         return [
+           "error" => false,
+           "mensaje" => $mensaje,
+           "data" => $data,
+         ];
+      }
+
+      function error($code, $mensaje) {
+        http_response_code($code);
+        return [
+          "error"=> true,
+          "code"=> $code,
+          "mensaje"=> $mensaje,
+          "data" => null
+        ];
+      }
 
 }
 
