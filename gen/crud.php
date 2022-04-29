@@ -27,7 +27,7 @@ $ATRIBUTOS = $argv;
         return 'varchar(20)';
         break;
       case 'int':
-        return 'varchar(11)';
+        return 'int(11)';
         break;
       case 'float':
         return 'float(10,3)';
@@ -324,7 +324,7 @@ function createTableHeadList($atr){
 
 
 // Create CONTROLLER READ
-$micarpeta = "paginas/$ENTIDAD";
+$micarpeta = "paginas/panel/$ENTIDAD";
 if (!file_exists($micarpeta)) {
     mkdir($micarpeta, 0777, true);
 }
@@ -621,4 +621,6 @@ function valueShowList($atr){
   }
   return $str;
 }
+
+echo "Success";
 ?>
