@@ -1,5 +1,5 @@
 <?php
-class User{
+class Model_User{
     private $db;
     function __construct($ddbb){
         $this->db = $ddbb;

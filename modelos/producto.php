@@ -1,5 +1,5 @@
 <?php
-class Producto{
+class Model_Producto{
     private $db;
     function __construct($ddbb){
         $this->db = $ddbb;

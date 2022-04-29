@@ -22,7 +22,7 @@ class Cmp{
         return [$html, $css, $script];
     }
     function create($name, $arg = []) {
-       $template= new template("vistas/_cmp/".$name.".kaiwik" , $arg);
+       $template= new template("vistas/".$name.".kaiwik" , $arg);
        return $template;
    }
    function get_string_between($string, $start, $end){

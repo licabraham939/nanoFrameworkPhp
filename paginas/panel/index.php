@@ -1,12 +1,12 @@
 <?php
- class Admin  extends Context {
+ class Panel  extends Context {
      private $context;
      function __construct($context){
          $this->context = $context;
          $this->context->title = "Inicio";
          if(!$context->sessionExist()){
              header("location:/");
-             die();             
+             die();
          }
      }
      public function index(){
@@ -61,6 +61,11 @@
                  "img" => "https://hpanel.hostinger.com/img/website_digital_marketing.7c5b297e.svg",
                  "title" => "Productos",
                  "url" => "/adminProductos"
+            ],
+             [
+                 "img" => "https://hpanel.hostinger.com/img/website_digital_marketing.7c5b297e.svg",
+                 "title" => "Entidad",
+                 "url" => "/panel/entidad"
             ],
              [
                  "img" => "https://hpanel.hostinger.com/img/website_business_service.969ff456.svg",

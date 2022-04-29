@@ -1,5 +1,5 @@
 <?php
-class Categorias{
+class Model_Categorias{
     private $db;
     function __construct($ddbb){
         $this->db = $ddbb;

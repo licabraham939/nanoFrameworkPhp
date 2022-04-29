@@ -28,7 +28,7 @@ class Context{
     // Modelos
     function model($modelName){
         require_once("modelos/".$modelName.".php");
-        $model = ucfirst($modelName);
+        $model = "Model_".ucfirst($modelName);
         $model = new $model($this->db);
         return $model;
     }

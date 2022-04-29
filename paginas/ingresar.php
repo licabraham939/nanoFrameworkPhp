@@ -7,14 +7,14 @@
           if($context->sessionExist()) header("location:/admin");
      }
 
-     public function index(){
+     public function index($arg = null){
          $html  = $this->context->create("_componentes/nav");
          $html  .= $this->context->create("logIn");
          $html  .= $this->context->create("_componentes/footer");
          return $this->context->ret($html);
      }
 
-      public function iniciar_session(){
+      public function iniciar_session($arg = null){
           $data = $this->context->model("user")->get($_POST["email"]);
           if(count($data) > 0){
                if(password_verify($_POST["password"], $data[0]->password)){
